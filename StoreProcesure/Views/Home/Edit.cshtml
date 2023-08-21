@@ -1,0 +1,130 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-8 mx-auto my-5 border border-2 border-info p-5 rounded-3">
+            <h1 class="text-center text-info"> Registration Page</h1>
+            <form action="/Home/Edit1" method="post">
+                <div class="mb-3">
+                    <label for="exampleId" class="form-label">Id</label>
+                    <input type="number" value="@ViewBag.data.Id" class="form-control" name="Id" id="exampleId" aria-describedby="emailHelp">
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="exampleInputName" class="form-label">Name</label>
+                    <input type="text" value="@ViewBag.data.Name" class="form-control" name="Name" id="exampleInputName" aria-describedby="emailHelp">
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="exampleInputMobile" class="form-label">Contact No</label>
+                    <input type="tel" value="@ViewBag.data.Mobile" name="Mobile" class="form-control" id="exampleInputMobile" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email Id</label>
+                    <input type="email" value="@ViewBag.data.Email" name="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+
+
+                <label for="exampleInputQualification" class="form-label mb-2">Highest Qualification</label>
+                <select class="form-select mb-3" name="Qualification" id="exampleInputQualification" aria-label="Default select example">
+                    @{ string a = "", b = "", c = "", d = "";
+                        if (ViewBag.data.Qualification == "10+2 Passed")
+                        {
+                            b = "selected";
+
+                        }
+                        else if (ViewBag.data.Qualification == "Diploma in Computer Science And Engineering")
+                        {
+                            c = "selected";
+                        }
+                        else if (ViewBag.data.Qualification == "B.tech in Computer Science And Engineering")
+                        {
+                            d = "selected";
+                        }
+                        else
+                        {
+                            a = "selected";
+                        }
+                    }
+                    <option @a>Select Highest Qualification</option>
+                    <option @b>10+2 Passed</option>
+                    <option @c>Diploma in Computer Science And Engineering</option>
+                    <option @d>B.tech in Computer Science And Engineering</option>
+                </select>
+
+                @*Gender
+                <div class="form-check mb-2">
+                    @if (@ViewBag.data.gender == "Male")
+                    {
+                        <input class="form-check-input" type="radio" name="gender" value="Male" id="flexRadioDefault1" checked> @:Male
+                        <input class="form-check-input" type="radio" name="gender" value="Female" id="flexRadioDefault2"> @:Female
+
+                    }
+                    else
+                    {
+                        <input class="form-check-input" type="radio" name="gender" value="Male" id="flexRadioDefault1"> @:Male
+                        <input class="form-check-input" checked type="radio" name="gender" value="Female" id="flexRadioDefault2"> @:Female
+
+                    }
+
+                </div>*@
+                Gender <br />
+                @if (@ViewBag.data.gender == "Male")
+                {
+                    <input class="form-check-input" type="radio" name="gender" value="Male" id="flexRadioDefault1" checked> @:Male <br />
+                    <input class="form-check-input" type="radio" name="gender" value="Female" id="flexRadioDefault2"> @:Female
+
+                }
+                else
+                {
+                    <input class="form-check-input" type="radio" name="gender" value="Male" id="flexRadioDefault1"> @:Male <br />
+                    <input class="form-check-input" checked type="radio" name="gender" value="Female" id="flexRadioDefault2"> @:Female
+
+                }
+                @*<div class="form-check mb-3">
+            @if (@ViewBag.data.gender=="Female")
+             {
+
+            }
+            else
+            {
+
+             <input class="form-check-input" type="radio" name="gender" value="Female" id="flexRadioDefault2">
+            <input class="form-check-input" type="radio" name="gender" value="Female" id="flexRadioDefault2">
+
+            }
+            <label class="form-check-label" for="flexRadioDefault2">
+                Female
+            </label>
+        </div>*@
+
+                <div>
+                    <label for="exampleTextArea" class="form-label">Address</label>
+                    <textarea cols="3" class="form-control mb-3" id="exampleTextArea" name="Address">
+                       @ViewBag.data.Address;
+                    </textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

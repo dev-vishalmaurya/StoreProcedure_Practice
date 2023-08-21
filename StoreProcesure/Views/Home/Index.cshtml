@@ -1,0 +1,112 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registation</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-8 mx-auto my-5 border border-2 border-info p-5 rounded-3">
+            <h1 class="text-center text-info"> Registration Page</h1>
+            <form method="post">
+                <div class="mb-3">
+                    <label for="exampleInputName" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="Name" id="exampleInputName" aria-describedby="emailHelp">
+                </div>
+
+        
+                <div class="mb-3">
+                    <label for="exampleInputMobile" class="form-label">Contact No</label>
+                    <input type="tel" name="Mobile" class="form-control" id="exampleInputMobile" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email Id</label>
+                    <input type="email" name="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+
+
+                <label for="exampleInputQualification" class="form-label mb-2">Highest Qualification</label>
+                <select class="form-select mb-3" name="Qualification" id="exampleInputQualification" aria-label="Default select example">
+                    <option selected>Select Highest Qualification</option>
+                    <option>10+2 Passed</option>
+                    <option>Diploma in Computer Science And Engineering</option>
+                    <option>B.tech in Computer Science And Engineering</option>
+                </select>
+
+                Gender
+                <div class="form-check mb-2">
+
+                    <input class="form-check-input" type="radio" name="gender" value="Male" id="flexRadioDefault1" checked>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Male
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" name="gender" value="Female" id="flexRadioDefault2">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Female
+                    </label>
+                </div>
+
+                <div>
+                    <label for="exampleTextArea" class="form-label">Address</label>
+                    <textarea cols="3" class="form-control mb-3" id="exampleTextArea" name="Address">
+                        
+                    </textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+
+            </form>
+        </div>
+    </div>
+
+        <div>
+            <table class="table table-striped">
+                <tr>
+
+                <th>Sr</th>
+                <th>Name</th>
+                <th>Contact No</th>
+                <th>Email</th>
+                <th>Qualification</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th colspan="2">Action</th>
+
+                </tr>
+                @foreach (var item in @ViewBag.data.Rows)
+            {
+                    <tr>
+                        <td>@item[0]</td>
+                        <td>@item[1]</td>
+                        <td>@item[2]</td>
+                        <td>@item[3]</td>
+                        <td>@item[4]</td>
+                        <td>@item[5]</td>
+                        <td>@item[6]</td>
+                        <td>
+                            <a class="btn btn-success" href="/home/Edit?Id=@item[0]&Name=@item[1]&Mobile=@item[2]&Email=@item[3]&Qualification=@item[4]&gender=@item[5]&Address=@item[6]">EDIT</a> </td>
+                         <td>   <a class="btn btn-danger" href="/home/Delete/?id=@item[3]">DELETE</a>
+
+                        </td>
+                    </tr>
+            }
+
+
+
+            </table>
+        </div>
+    <script src="~/Content/js/bootstrap.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+</body>
+</html>
